@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import Messenger from "./components/pages/messenger/messenger"
+import Profile from "./components/pages/profile/profile"
+import UserContextProvider from './contexts/userContext';
+import MessageContextProvider from './contexts/messageContext';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App container">
+      <Router>
+      <UserContextProvider>
+        <MessageContextProvider>
+          <Switch>
+            <Route path="/profile" exact component={Profile}/>
+            <Route path="/messenger" exact component={Messenger}/>
+            <Route component={Messenger}/>
+          </Switch>
+        </MessageContextProvider>
+      </UserContextProvider>
+      </Router>
     </div>
   );
 }
