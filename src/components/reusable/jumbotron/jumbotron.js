@@ -9,6 +9,7 @@ const Jumbotron = ({title, lead , link, linkText}) => {
             <h1 className="display-5">{title}</h1>
             <p className="lead">{lead}</p>
             <p className="lead">
+                {/* return a NavLink to take us to the link specified in the link prop */}
                 <NavLink className="btn btn-primary btn-lg" to={link}>{linkText}</NavLink>
             </p>
         </div>
